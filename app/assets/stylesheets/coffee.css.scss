@@ -1,0 +1,66 @@
+body {
+	font-family:'Roboto Slab', sans-serif;
+}
+
+
+#drawer {
+	background-color: #392B38;
+	color: #C5415D;
+	font-weight: bold;
+	font-size:20px;
+}
+
+core-scaffold /deep/ #banner {
+	background: #392B38;
+	color: #ffffde;
+}
+
+.colored {
+	background-color: #c5415d;
+}
+
+.content {
+	background-color: #BDAAA2;
+}
+
+.custom-card {
+	background-color: #ffffde;
+	color: #372d3b;
+	font-size: 1rem;
+}
+
+.custom-card h1, h2{
+	color: #C5415D;
+}
+
+core-scaffold /deep/ core-header-panel {
+	background-color: #372d3b;
+}
+
+paper-dropdown {
+	background-color: #ffffde;
+}
+
+paper-dropdown::shadow #menu {
+    background-color: #372d3b;
+    color: #ffffde;
+    border: 1px solid #ccc;
+    overflow: hidden;
+}
+
+paper-dropdown /deep/ #menu {
+
+    overflow: auto;
+}
+
+
+/*
+
+pink	 	#c5415d
+darkbrown	#372d3b
+medbrown	#BDAAA2
+lightbrown	#E8DAC3
+lightfont 	#ffffde
+
+	content font-weight: 300;
+*/

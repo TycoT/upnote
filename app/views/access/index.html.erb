@@ -1,0 +1,110 @@
+<% @page_title = "Admin Menu" %>
+
+<core-scaffold>
+
+  <core-header-panel navigation flex id="drawer">
+    <div id="logo">
+      <%= image_tag "logo2(white).png", {width: 250} %>
+    </div>
+
+    <core-menu id="menu" selected="0">
+      <core-submenu class="sub-menu" selected="0" icon='book' label="Journal">
+        <core-item selected="0" icon='bookmark-outline' label="jan"></core-item>
+        <core-item icon='bookmark-outline' label="feb"></core-item>
+        <core-item icon='bookmark-outline' label="mar"></core-item>
+        <core-item icon='bookmark-outline' label="apr"></core-item>
+        <core-item icon='bookmark-outline' label="may"></core-item>
+        <core-item icon='bookmark-outline' label="jun"></core-item>
+        <core-item icon='bookmark-outline' label="jul"></core-item>
+        <core-item icon='bookmark' label="aug"></core-item>
+      </core-submenu>
+      <core-item class="sub-menu" icon='account-balance' label="School"></core-item>
+      <core-item class="sub-menu" icon='credit-card' label="Finances"></core-item>
+      <core-item class="sub-menu" icon='favorite' label="Health"></core-item>
+    </core-menu>
+
+  </core-header-panel>
+  
+    <core-toolbar class="dark-theme" tool id='banner'>
+    
+      <span flex id="title"> August - Week 4 </span>
+      <core-toolbar id="nav-bar">
+        <paper-button class="colored" raisedButton><a href="/journal/home">Home</a></paper-button>
+        <paper-button label="flat button">About</paper-button>
+        <paper-button label="flat button">Sign-up</paper-button>
+      </core-toolbar>
+
+    </core-toolbar>
+  <div class="content" layout vertical center id="content-container" id="editable">
+
+    <% @entries.each do |entry| %>
+    <custom-card class="custom-card">
+        <h1 flex> <%= entry.day %></h1>
+        <h2>  <%= entry.month %>,  <%= entry.year %> </h2>
+
+        <ul class="sortable">
+
+         <!--
+          <%= link_to "hello", { :controller => "access", :action => "hello" }, :remote => true %>
+          <div id='time_div'></div>
+          -->
+
+          <!-- Tasks -->
+          <li class="tasks"> 
+            <paper-checkbox class="handle"></paper-checkbox>
+            <span class="task-content editable" contenteditable="true"> Description of a task goes here </span>
+          </li>
+
+          <!-- Notes -->
+          <li class="notes">
+            <core-icon icon="keep" class="handle" id="heart" flex></core-icon>
+            <span contenteditable="true"class="note-content" editable> Description of a task goes here </span>
+          </li>
+
+          <!-- Events -->
+          <li class="events">
+            <core-icon icon="event" class="handle"></core-icon>
+            <span contenteditable="true" class="event-content" editable> Description of a Event goes here </span>
+          </li>
+
+          <!--ADD LIST BUTTON-->
+          <li class="add-list">
+            <core-icon icon="add"></core-icon>
+            <paper-dropdown label="click to add new list">
+              <core-icon class="addNew" icon="event">
+                <span style="padding-left:30px">Event</span>
+              </core-icon>
+              <br />
+              <core-icon class="addNew" icon="check">
+                <span style="padding-left:30px">Task</span>
+              </core-icon>
+              <br />
+              <core-icon class="addNew" icon="keep">
+                <span style="padding-left:30px">Note</span>
+              </core-icon>
+              <br />
+              <core-icon class="addNew" icon="drive-keep">
+                <span style="padding-left:30px">Idea</span>
+              </core-icon>
+              <br />
+              <core-icon class="addNew"  icon="explore">
+                <span style="padding-left:30px">Explore</span>
+              </core-icon>
+              <br />
+            </paper-dropdown>
+          </li>
+        </ul>
+    </custom-card>
+    <% end %>
+
+  </div>
+  <footer>
+    <div id='footer-container'> 
+      <div id='footer'>© 2014 Upnote</span> 
+    </div>
+  </footer>
+</core-scaffold>
+
+
+
+

@@ -1,0 +1,47 @@
+body {
+	font-family: 'Roboto Slab', sans-serif;
+}
+
+#drawer {
+	background-color: #1E1E20;
+	color: #DC3522;
+	font-weight: bold;
+	font-size:20px;
+}
+
+core-scaffold /deep/ #banner {
+	background: #1E1E20;
+	color: #DC3522;
+}
+
+.colored {
+	background-color: #2A2C2B;
+}
+
+.content {
+	background-color: #374140;
+}
+
+.custom-card {
+	background-color: #D9CB9E;
+	color: #1E1E20;
+	font-size: 1rem;
+}
+
+.custom-card h1, h2{
+	color: #DC3522;
+}
+
+core-scaffold /deep/ core-header-panel {
+	background-color: #1E1E20;
+}
+
+/*
+
+white 	#FCFFF5
+teal 	#91AA9D
+grey	#3E606F
+black	#193441
+
+
+*/

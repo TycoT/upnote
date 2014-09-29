@@ -1,0 +1,122 @@
+// Place all the styles related to the Access controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  font-family: sans-serif;
+}
+#navheader {
+  background-color: #56BA89;
+}
+.content {
+  padding: 20px;
+}
+
+#banner {
+  background-color: #041E49;
+}
+
+#drawer {
+  background-color: #e2e2e2
+}
+
+#logo {
+  margin-top: 0px;
+}
+
+#menu {
+  margin-top:-30px;
+}
+
+.sub-menu {
+  padding-left:50px;
+}
+
+#title {
+  padding-left: 50px;
+}
+
+#banner {
+  width: 100%;
+  background-color: transparent;
+}
+
+#nav-bar {
+  background-color: transparent;
+  font-size: 15px;
+}
+
+.colored {
+  background-color: #526e9c
+  ;
+}
+
+#title {
+  
+}
+
+.content {
+  background-color: #eee;
+}
+
+[contenteditable="true"] { 
+  outline: none; 
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+.tasks {
+  padding-top: 15px;
+  padding-left: 15px;
+}
+
+.notes {
+  padding-top: 15px;
+  padding-left: 13px;
+}
+
+.events {
+  padding-top: 15px;
+  padding-left: 13px;
+}
+
+.add-list {
+  padding-left: 14px;
+}
+
+.add-list paper-dropdown {
+  padding-left: 15px;
+}
+
+.add-list paper-dropdown core-icon{
+  padding-left: 15px;
+}
+
+.note-content {
+  padding-left: 17px;
+}
+
+.task-content {
+  padding-left: 20px;
+}
+
+.event-content {
+  padding-left: 17px;
+}
+
+#footer-container {
+  font-size: 10px;
+  float:right;
+  padding:20px 20px 20px 0;
+}
+
+core-scaffold /deep/ core-header-panel {
+  background-color: #e2e2e2;
+}
+
+core-drawer-panel core-header-panel core-toolbar {
+  shadow-box: 0 1px 5px rgba(0,0,0,.3);
+}

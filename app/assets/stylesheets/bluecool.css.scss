@@ -1,0 +1,43 @@
+body {
+	font-family: 'Roboto Slab', sans-serif;
+}
+
+#drawer {
+	background-color: #193441;
+	color: #FCFFF5;
+	font-weight: bold;
+	font-size:20px;
+}
+
+core-scaffold /deep/ #banner {
+	background: #193441;
+	color: #FCFFF5;
+}
+
+.colored {
+	background-color: #3E606F;
+}
+
+.content {
+	background-color: #3E606F;
+}
+
+.custom-card {
+	background-color: #D1DBBD;
+	color: #193441;
+	font-size: 1rem;
+}
+
+core-scaffold /deep/ core-header-panel {
+	background-color: #193441;
+}
+
+/*
+
+white 	#FCFFF5
+teal 	#91AA9D
+grey	#3E606F
+black	#193441
+
+
+*/
