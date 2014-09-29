@@ -39,8 +39,8 @@
 
     <% @entries.each do |entry| %>
     <custom-card class="custom-card">
-        <h1 flex> <%= entry.day %></h1>
-        <h2>  <%= entry.month %>,  <%= entry.year %> </h2>
+        <h1 flex> <%= entry.created_at.strftime('%A') %></h1>
+        <h2>  <%= entry.created_at.strftime('%B %d') %>,  <%= entry.year %> </h2>
 
         <ul class="sortable">
 

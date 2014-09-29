@@ -13,9 +13,10 @@ development:
   encoding: utf8
   database: upnote_development
   pool: 5
-  username: upnote
-  password: secretpassword
-  socket: /tmp/mysql.sock
+  username: root
+  password: ""
+  #socket: /tmp/mysql.sock
+  socket: /var/run/mysqld/mysqld.sock
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
