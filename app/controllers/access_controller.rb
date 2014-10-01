@@ -13,6 +13,12 @@ class AccessController < ApplicationController
     end
   end
 
+  def create_bullet
+    puts "CREATE BULLET"
+    puts params[:bullet_type]
+    puts params[:position]
+  end
+
   def index
 
     # to check current date and query database to find if any entry with the same date as current date

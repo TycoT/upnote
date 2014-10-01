@@ -22,6 +22,11 @@ $(document).ready(function () {
 		switch(bulletType){
 			case "Event":
 				var string = "<div class='events'><core-icon icon='event'></core-icon><span contenteditable='true' class='event-content'> Description of a Event goes here </span></div>";
+				//find and embed target's position/bullet id?
+				//embed entry id into entry div
+				//find entry date (maybe add the entry number somewhere into the entry div)
+				//figure out how to interpolation of javascript into ajax.
+				$.ajax({url: "access/create_bullet", type: "POST", data: {bullet_type: 'event', position: '7'}});
 			break;
 			case "Task":
 				var string = "<div class='tasks' contenteditable='false'> <paper-checkbox></paper-checkbox><span contenteditable='true' class='task-content editable' contenteditable='true'> Description of a Task goes here </span></div>";
@@ -39,6 +44,7 @@ $(document).ready(function () {
 			var string = "error";
 		}
 		$(target).parent().parent().before(string);
+
 		
 		//removing addlist, and creating a new one because cannot figure out how to work it
 		
