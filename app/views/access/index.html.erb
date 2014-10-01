@@ -40,10 +40,13 @@
 
     <% @entries.each do |entry| %>
     <custom-card class="custom-card">
+        <!-- embedded entry id, for bullet to access for easy updating -->
+
+        <div id="entry-id" style="visibility:hidden; width:0px; height:0px;">
+          <%= entry.id %>
+        </div>
         <h1 flex> <%= entry.created_at.strftime('%A') %></h1>
         <h2>  <%= entry.created_at.strftime('%B %d') %>,  <%= entry.year %> </h2>
-
-        git 
 
         <ul class="sortable">
 
@@ -74,12 +77,12 @@
           <li class="add-list">
             <core-icon icon="add"></core-icon>
             <paper-dropdown label="click to add new list">
-              <core-icon class="addNew" icon="event">
-                <span style="padding-left:30px">Event</span>
-              </core-icon>
-              <br />
               <core-icon class="addNew" icon="check">
                 <span style="padding-left:30px">Task</span>
+              </core-icon>
+              <br />
+              <core-icon class="addNew" icon="event">
+                <span style="padding-left:30px">Event</span>
               </core-icon>
               <br />
               <core-icon class="addNew" icon="keep">

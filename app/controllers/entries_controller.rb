@@ -27,7 +27,12 @@ class EntriesController < ApplicationController
 		# listing all entries found from current day to previous monday
 		current_date = Date.current
 
-		#user = User.where(:id => session[:user_id]).first
-
+		user = User.where(:id => session[:user_id]).first
+		# Lists entries from current day to the beggining of the week.
+    first_day = current_date.at_beginning_of_week.day
+    current_day = current_date.day
+    current_month = current_date.strftime('%B')
+    current_year = current_date.strftime('%Y')
+    @entries = user.journal.entries.where("day >= #{first_day} AND day <= #{current_day} AND month = '#{current_month}' AND year = '#{current_year}'")
 	end
 end

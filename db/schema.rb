@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140924014702) do
+ActiveRecord::Schema.define(version: 20141001022027) do
 
   create_table "bullets", force: true do |t|
     t.string   "bullet_type"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20140924014702) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "entry_id"
+    t.integer  "position"
   end
 
   create_table "entries", force: true do |t|

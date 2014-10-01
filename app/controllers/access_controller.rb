@@ -15,8 +15,20 @@ class AccessController < ApplicationController
 
   def create_bullet
     puts "CREATE BULLET"
-    puts params[:bullet_type]
-    puts params[:position]
+    puts params[:bt]
+    puts params[:p]
+    puts params[:eid]
+
+    user = User.where(:id => session[:user_id]).first
+    #define new bullet entity with param values
+    new_bullet = Bullet.new(:bullet_type => params[:bt], :position => params[:p])
+    #insert into bullet's target entry via using entry id
+    user.journal.entries.find(params[:eid]).bullets << new_bullet
+
+
+    respond_to do |format|
+      format.js { render :layout=>false }
+    end
   end
 
   def index
@@ -41,10 +53,11 @@ class AccessController < ApplicationController
 
     # Lists entries from current day to the beggining of the week.
     first_day = current_date.at_beginning_of_week.day
-    current_day = current_date.day
+    current_day = current_date.strftime('%d')
     current_month = current_date.strftime('%B')
     current_year = current_date.strftime('%Y')
-    @entries = user.journal.entries.where("day >= #{first_day} AND day <= #{current_day} AND month = '#{current_month}' AND year = '#{current_year}'")
+    @entries = user.journal.entries.where("day >= #{first_day} OR day <= #{current_day} AND month = '#{current_month}' AND year = '#{current_year}'")
+      #might have some issues at the end of the month where first day of the week is double digit and current day is single.
   end
 
   def login
