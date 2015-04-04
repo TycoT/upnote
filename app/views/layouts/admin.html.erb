@@ -1,13 +1,69 @@
 <html>
   <head>
+  <title>Upnote</title>
   	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
-  	<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  	<%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application" %>
-  <%= html_import_tag "application", "data-turbolinks-track" => true %>
+  <%= html_import_tag "application" %>
   <%= csrf_meta_tags %>
   </head>
   <body>
   	<%= yield %>
+      <core-overlay backdrop>
+    <paper-tabs id="about-paper-tabs" selected="0">
+      <paper-tab id="about-tab">About</paper-tab>
+      <paper-tab id="updates-tab">Updates</paper-tab>
+      <paper-tab id="contact-tab">Contact</paper-tab>
+    </paper-tabs>
+    <div id="about-overlay">
+      <ul>
+        <li><p>Upnote is a online journal application to store and organize your thoughts/task/activities/events through Entries and Bullets.</p></li>
+        <li><p>Each day in your life is an Entry, each Entry can create Bullets!</p></li>
+        <li><p>A Bullet can be either an impotant task, an event, an idea, random thoughts, anything you want to jot down.</p></li>
+        <li><p>Each bullet can be sorted by dragging it, and each bullet is saved dynamically so you will never have to leave the page.</p></li>
+        <li><p>The Week View or home page is the current week you are on, you can navigate to past or future weeks by the navigation arrows at the bottom.</p></li>
+        <li><p>The Calender View shows the entire month in a grid-layout. Each grid represents a day and icons of any bullets you have created will show up here.This view is great to see for upcoming events and knowing how much you have been jotting down notes!</p></li>
+        <li><p>Keyboard Shortcuts(when editing bullet descriptions):</p>
+          <p style="padding-left:40px">ENTER: Saves any edits instantly</p>
+          <p style="padding-left:40px">SHIFT+ENTER: Creates a sub-bullet</p></li>
+          <p style="padding-left:40px">TAB: Indents bullet description</p></li>
+          <p style="padding-left:40px">SHIFT+TAB: Unindents bullet description</p></li>
+        <li><p>Upnote is simple, sleek, and full of functionality.</p></li>
+      </ul>
+    </div>
+    <div id="updates-overlay" style="display:none;">
+      <h3>New Features/Fixes</h3>
+      <ul>
+        <li>Features
+          <ul>
+            <li>Ability to click on a specific calender date to access and edit that entry on the spot</li>
+            <li>Mobile friendly/Scaling</li>
+            <li>Options for User to choose different themes</li>
+          </ul>
+        </li>
+        <li>Fixes/Bugs 
+          <ul>
+            <li>Scaling Issues with portriat mode for Month View</li>
+          </ul>
+        </li>
+      </ul>
+      <h3>Update Log</h3>
+      <ul>
+        <li>Oct 28, 2014
+          <ul>
+            <li>Launch of Upnote!</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div id="contact-overlay" style="display:none;">
+      Contact me for any inquries or bug reports at upnoteco@gmail.com
+    </div>
+  </core-overlay>
+  <footer>
+  </footer>
+</core-scaffold>
+
   </body>
 
-</html>ra
+</html>

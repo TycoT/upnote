@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141001022027) do
+ActiveRecord::Schema.define(version: 20141011203436) do
 
   create_table "bullets", force: true do |t|
     t.string   "bullet_type"
-    t.string   "description"
+    t.text     "description"
     t.integer  "checked",     default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -25,11 +25,13 @@ ActiveRecord::Schema.define(version: 20141001022027) do
 
   create_table "entries", force: true do |t|
     t.integer  "journal_id"
-    t.string   "day"
-    t.string   "month"
+    t.integer  "day"
+    t.integer  "month"
     t.integer  "year"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "day_name"
+    t.string   "month_name"
   end
 
   create_table "journals", force: true do |t|

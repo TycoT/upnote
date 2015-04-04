@@ -11,8 +11,12 @@
 // about supported directives.
 //
 //= require platform/platform
+//= require webcomponentsjs/webcomponents
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
-//= require turbolinks
+
 //= require edit-script
+//= require sweet-alert
+
+

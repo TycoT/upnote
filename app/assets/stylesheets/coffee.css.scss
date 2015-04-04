@@ -15,6 +15,10 @@ core-scaffold /deep/ #banner {
 	color: #ffffde;
 }
 
+#home-button /deep/ core-icon{
+  color:#c5415d;
+}
+
 .colored {
 	background-color: #c5415d;
 }
@@ -34,7 +38,7 @@ core-scaffold /deep/ #banner {
 }
 
 core-scaffold /deep/ core-header-panel {
-	background-color: #372d3b;
+	background-color: #BDAAA2;
 }
 
 paper-dropdown {

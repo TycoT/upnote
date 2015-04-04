@@ -1,0 +1,48 @@
+$('#month-container').remove();
+$('.content').after('<div layout vertical center id="month-container" style="display:none;"><table id="month-container-table"><tr><td class="calender-day-names">SUN</td><td class="calender-day-names">MON</td><td class="calender-day-names">TUES</td><td class="calender-day-names">WED</td><td class="calender-day-names">THUR</td><td class="calender-day-names">FRI</td><td class="calender-day-names">SAT</td></tr><% 6.times do |a| %><tr><% 7.times do |b| %><td class="calender-day"><h1 flex class="day-date">__</h1><div class="tiny-bullets"><table><tr class="calender-first-row"><td></td><td></td><td></td><td></td><td></td></tr><tr class="calender-second-row"><td></td><td></td><td></td><td></td><td></td></tr></table></div></td><% end %></tr><% end %></table><!-- next and prev month buttons--><div id="bottom-buttons"><paper-icon-button id="back-month-button" icon="chevron-left"></paper-icon-button><paper-icon-button id="next-month-button" icon="chevron-right"></paper-icon-button></div></div>')
+$("#month-container").hide();
+<%= i = 0 %>
+<% @all_entries.each do |entry| %>
+		$(".day-date").eq("<%= i %>").text("<%= entry.day %>");
+		<%
+		taskNo = entry.bullets.where(:bullet_type => "task").length
+		eventNo = entry.bullets.where(:bullet_type => "event").length
+		noteNo = entry.bullets.where(:bullet_type => "note").length
+		ideaNo =  entry.bullets.where(:bullet_type => "idea").length
+		exploreNo =  entry.bullets.where(:bullet_type => "explore").length
+		%>
+		<% if(taskNo > 0) %>
+		$(".calender-first-row").eq("<%= i %>").children().eq(0).html("<core-icon icon='check-box-outline-blank' class='handle'></core-icon>");
+		$(".calender-second-row").eq("<%= i %>").children().eq(0).html("<%= taskNo %>");
+		<% end %>
+		<% if (eventNo > 0) %>
+		$(".calender-first-row").eq("<%= i %>").children().eq(1).html("<core-icon icon='event' class='handle'></core-icon>");
+		$(".calender-second-row").eq("<%= i %>").children().eq(1).html("<%= eventNo %>");
+		<% end %>
+		<% if (noteNo > 0) %>
+		$(".calender-first-row").eq("<%= i %>").children().eq(2).html("<core-icon icon='keep' class='handle' id='heart' flex></core-icon>");
+		$(".calender-second-row").eq("<%= i %>").children().eq(2).html("<%= noteNo %>");
+		<% end %>
+		<% if (ideaNo > 0) %>
+		$(".calender-first-row").eq("<%= i %>").children().eq(3).html("<core-icon icon='drive-keep' class='handle' id='heart' flex></core-icon>");
+		$(".calender-second-row").eq("<%= i %>").children().eq(3).html("<%= ideaNo %>");
+		<% end %>
+		<% if (exploreNo > 0) %>
+		$(".calender-first-row").eq("<%= i %>").children().eq(4).html("<core-icon icon='explore' class='handle' id='heart' flex></core-icon>");
+		$(".calender-second-row").eq("<%= i %>").children().eq(4).html("<%= exploreNo %>");
+		<% end %>
+		//show today
+		<% if entry.day == @today.day && entry.month == @today.month && entry.year == @today.year %>
+			$(".day-date").eq("<%= i %>").parent().css("background-color","#C5415D");
+			$(".day-date").eq("<%= i %>").parent().css("color","#ffffde");
+			$(".calender-first-row").eq("<%= i %>").children().children().css("color","#392B38");
+			$(".calender-second-row").eq("<%= i %>").css("color","#ffffde");
+
+		<% end %>
+		<% i = i+1 %>
+		<%
+
+	end
+%>
+$("#title").text("<%= @month_name %>");
+$('#month-container').show('slide',{direction:'right'},500);

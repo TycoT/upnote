@@ -1,0 +1,66 @@
+--TODO LIST--
+
+
+Thurs Oct 2, 2014
+*	(DONE) Fix description container to wrap around properly
+*	(DONE) When in focus "Enter" submits the form
+		- when bullet updates, triggers a quick green glow highlight of li elemnt to signify it has been saved
+
+* 	(DONE)Destroy bullet
+	- on hover over delete button appears on the right of bullet option button
+	- comfirmation alert to delete.
+
+* 	(DONE AND PROBLEM FIXED)LOOK AT $(document).on("click", "img", function () {
+* 	(DONE with just recording the accidental check when sorting) when dragging task, disable animation. but how?
+*	(DONE) When create new bullet, focus in with everything highlighted
+*	(DONE) Cannot delete past last character
+* 	(DONE) scroll to bottom when load
+
+*	Sub bullet (unsortable)
+	-Created from bullet option menu
+	-When in focus of a subbulet
+		-Shift-Enter listener
+			-create a new bullet of same type, ajax into an action and change bullet element html position from js.erb
+			-focus the mouse on the new form
+		-Tab listner
+			-send ajax request to action to appened subbullet to main bullet
+			-change html via js.
+
+*	(DONE)INCREASE DECRIPtION length
+*	(done)add simple_format tag to all bullets
+*	(DONE)fix adding sub-bullets to indented bullets. 
+		-blockquote is causing a problem by adding a line
+		-write a function to check if characters 15 spaces before the cursor is <blockquote>, if so, do not break line.
+*	(DONE) make addlist unsortable.
+* 	(DONE) add shift-enter to create subbulet
+
+*	(DONE)Figure out why it isnt showing current week
+* 	(REDESIGNED)implement a add feature at the bottom of the page to add a custom card to put bullets in.
+
+*	(DONE)fix tite week header
+*	(done - slight redesign)fix drawer view Journal -> Month -> Weeks
+		-4 weeks, and any left over get put into week4.
+
+*	(DONE)back button.
+*	(done)create user page / log in page 
+*	(Sorta-done)craete a home page
+*	footer would be on the drawer.
+*	(DONE) Calender view
+*	calender - feature to edit calender grid on the spot, pop out custom card
+*	calender - navigate to different months
+*	fix problem with week navigation
+*	navigation to be fix to vertically middle to window.
+
+
+
+*	add line bullet.? (extrea feature later on)
+*	seperate bullet actions from access controller
+*	fix scaling problem
+		-as you scale down, change the .editable width % and might have to tweak with the delete button's magins
+* 	FOR NOW, Journal drop down menu will disaply the whole month of entires in a new page that will link to. A LIST STYLE.
+		- In the future, i want a grid system, and when you hover over a grid, it opens the card of that date.
+*	add month button
+* lotss of bugs in next and prev page.
+
+
+

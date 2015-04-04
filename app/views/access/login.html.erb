@@ -1,20 +1,39 @@
 <% @page_title = "Admin Login" %>
-
-<div class="login">
-  <%= form_tag(:action => 'attempt_login') do %>
-  <table>
-    <tr>
-      <td><%= label_tag(:username) %></td>
-      <td><%= text_field_tag(:username) %></td>
-    </tr>
-    <tr>
-      <td><%= label_tag(:password) %></td>
-      <td><%= password_field_tag(:password) %></td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td><%= submit_tag("Log In") %></td>
-    </tr>
-  </table>
-  <% end %>
+<div id="login-container">
+  <div id="logo-form-container">
+    <div id="front-logo">
+      <%= image_tag "logo5.png", {width: 450} %>
+    </div>
+    <custom-card id='login-card'><paper-shadow z="5"></paper-shadow>
+      <paper-tabs id="login-paper-tabs" selected="0">
+        <paper-tab id="login-tab">Login</paper-tab>
+        <paper-tab id="signup-tab">Sign-up</paper-tab>
+      </paper-tabs>
+      <div id="login-form"><paper-shadow z="2"></paper-shadow>
+        <p style="text-align:center; color:red;"><%= flash[:notice] %><p>
+        <%= form_tag(:action => 'attempt_login') do %>
+        <%= text_field_tag(:username,nil, :placeholder =>"Username") %>
+        <%= password_field_tag(:password, nil, :placeholder =>"Password") %>
+        <br />
+        <%= submit_tag "", :style=>"display:none;" %>
+        <div id="login-button"><paper-button id="form-button" raised class="colored">Submit</paper-button></div>
+        <% end %>
+      </div>
+      <div id="signup-form" style="display:none;">
+      <p style="text-align:center; color:red;"><%= flash[:notice] %><p>
+      <%= form_tag(:action => 'sign_up') do %>
+        <%= text_field_tag(:username, nil, :placeholder =>"Username") %>
+        <%= text_field_tag(:email, nil, :placeholder =>"Email") %>
+        <br />
+        <%= password_field_tag(:password, nil, :placeholder=>"Password") %>
+        <%= password_field_tag(:confirm_password, nil, :placeholder=>"Password Comfirmation") %>
+        <br />
+        <%= submit_tag "", :style=>"display:none;" %>
+        <div id="login-button"><paper-button id="form-button" raised class="colored">Submit</paper-button></div>
+        <% end %>
+      </div>
+    </custom-card>
+  </div>
+  
 </div>
+

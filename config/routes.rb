@@ -1,6 +1,6 @@
 Upnote::Application.routes.draw do
 
-  root "journal#index"
+  root "access#login"
 
   get 'admin', :to => "access#index"
 

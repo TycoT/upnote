@@ -1,1 +1,184 @@
-Home index root
+
+ <% @page_title = "Admin Menu" %>
+
+<core-scaffold>
+
+  <core-header-panel navigation flex id="drawer">
+    <div id="logo">
+      <%= image_tag "logo3.png", {width: 250} %>
+    </div>
+
+
+    <core-menu>
+      <core-submenu id='sub-menu' icon='book' label='Journal'>
+        <% @ary.each do |a| %>
+        <%= link_to({:controller => "journal" , :action => "index", :month => a }) do %>
+
+          <core-submenu class='month-menu' icon='bookmark-outline' label=<%= a %> >
+          </core-submenu>
+        <% end %>
+        
+        
+        <% end %>
+
+        <core-item icon='add' id="add-month" label='add month'></core-item>
+      </core-submenu>
+      
+     <%= link_to({:controller => "access" , :action => "home"}) do %>
+      <core-item icon='home' label='Home'></core-item>
+      <% end %>
+      <!--<core-item icon='settings' label='Settings'></core-item>-->
+      <core-item id="about" icon='help' label='About'></core-item>
+      <%= link_to({:controller => "access" , :action => "logout"}) do %>
+      <core-item icon='exit-to-app' label='Logout'></core-item>
+      <% end %>
+    </core-menu>
+
+    <div id='drawer-footer'>
+      <span>© 2014 Upnote</span>
+    </div>
+
+
+    
+
+
+  </core-header-panel>
+  
+    <core-toolbar class="dark-theme" tool id='banner'>
+    
+      <span id="title"> <%= @month %> </span>
+      <%= link_to({:controller => "access" , :action => "home"}) do %>
+      <core-item id="home-button" icon='home'></core-item>
+      <% end %>
+
+      
+
+    </core-toolbar>
+  <div class="content" layout vertical center id="content-container" id="editable">
+
+    <% @entries.each do |entry| %>
+    
+    <!-- checks if the entry generated is AFTER user's current date, if so, add "not-yet" class which adds an opacity of 0.5 as a visual indication that this day has not yet come -->
+    <%  if entry.day != @current_day.to_i || entry.month_name != @current_month %>
+        <custom-card class='custom-card not-yet'> 
+        <% else %>
+        <custom-card class='custom-card today'>
+        <% end %>
+    
+        <!-- embedded entry id, for bullet to access for easy updating -->
+
+        <div class="entry-id" style="visibility:hidden; width:0px; height:0px;">
+          <%= entry.id %>
+        </div>
+        <h1 flex> <%= entry.day_name %></h1>
+        <h2>  <%= entry.month_name %> <%= entry.day %>,  <%= entry.year %> </h2>
+        <hr/>
+        <ul class="sortable">
+
+          <% entry.bullets.reorder(:position).each do |bullet| %>
+            <% case bullet.bullet_type %>
+                  <% when 'task' %>
+                    <li class="tasks"> 
+                      <div class="bullet-id" style="visibility:hidden; width:0px; height:0px;">
+                        <%= bullet.id %>
+                      </div>
+                      <% if bullet.checked == 1 %>
+                        <paper-checkbox class="handle" checked></paper-checkbox>
+                      <% else %>
+                        <paper-checkbox class="handle"></paper-checkbox>
+                      <% end %>
+                      <div class="task-content editable" contenteditable="false"> 
+                        <span contenteditable="true"><%= simple_format(bullet.description, {}, wrapper_tag: "span") %></span> 
+                      </div>
+                      <core-icon-button class='expand-button' icon='expand-more' class='handle'></core-icon-button>
+                      <core-icon class="delete-button"icon="backspace" class="handle"></core-icon>
+                    </li>
+                  <% when 'event' %>
+                    <li class="events">
+                      <div class="bullet-id" style="visibility:hidden; width:0px; height:0px;">
+                        <%= bullet.id %>
+                      </div>
+                      <core-icon icon="event" class="handle"></core-icon>
+                      <div class="event-content editable" contenteditable="false"> 
+                        <span contenteditable="true"><%= simple_format(bullet.description, {}, wrapper_tag: "span") %> </span> 
+                      </div>
+                      <core-icon-button class='expand-button' icon='expand-more' class='handle'></core-icon-button>
+                      <core-icon class="delete-button"icon="backspace" class="handle"></core-icon>
+                    </li>
+                  <% when 'note' %>
+                    <li class="notes">
+                      <div class="bullet-id" style="visibility:hidden; width:0px; height:0px;">
+                        <%= bullet.id %>
+                      </div>
+                      <core-icon icon="keep" class="handle" id="heart" flex></core-icon>
+                      <div contenteditable="false" class="note-content editable">
+                        <span contenteditable="true"> <%= simple_format(bullet.description, {}, wrapper_tag: "span") %> </span>
+                      </div>
+                      <core-icon-button class='expand-button' icon='expand-more' class='handle'></core-icon-button>
+                      <core-icon class="delete-button"icon="backspace" class="handle"></core-icon>
+                    </li>
+                  <% when 'idea' %>
+                    <li class="notes">
+                      <div class="bullet-id" style="visibility:hidden; width:0px; height:0px;">
+                        <%= bullet.id %>
+                      </div>
+                      <core-icon icon="drive-keep" class="handle" id="heart" flex></core-icon>
+                      <div contenteditable="false"class="note-content editable"> 
+                        <span contenteditable="true"><%= simple_format(bullet.description, {}, wrapper_tag: "span") %> </span> 
+                      </div>
+                    <core-icon-button class='expand-button' icon='expand-more' class='handle'></core-icon-button>
+                    <core-icon class="delete-button"icon="backspace" class="handle"></core-icon>
+                    </li>
+                  <% when 'explore' %>
+                    <li class="notes">
+                      <div class="bullet-id" style="visibility:hidden; width:0px; height:0px;">
+                        <%= bullet.id %>
+                      </div>
+                      <core-icon icon="explore" class="handle" id="heart" flex></core-icon>
+                      <div contenteditable="false"class="note-content editable"> 
+                        <span contenteditable="true"><%= simple_format(bullet.description, {}, wrapper_tag: "span") %> </span> 
+                      </div>
+                    <core-icon-button class='expand-button' icon='expand-more' class='handle'></core-icon-button>
+                    <core-icon class="delete-button"icon="backspace" class="handle"></core-icon>
+                    </li>
+                <% end %>
+                  
+            
+          <% end %>
+
+          
+
+          <!--ADD LIST BUTTON-->
+          <li class="add-list" id="nosort">
+            <core-icon icon="add"></core-icon>
+            <paper-dropdown label="click to add new bullet">
+              <core-icon class="addNew" icon="check">
+                <span style="padding-left:30px">Task</span>
+              </core-icon>
+              <br />
+              <core-icon class="addNew" icon="event">
+                <span style="padding-left:30px">Event</span>
+              </core-icon>
+              <br />
+              <core-icon class="addNew" icon="keep">
+                <span style="padding-left:30px">Note</span>
+              </core-icon>
+              <br />
+              <core-icon class="addNew" icon="drive-keep">
+                <span style="padding-left:30px">Idea</span>
+              </core-icon>
+              <br />
+              <core-icon class="addNew"  icon="explore">
+                <span style="padding-left:30px">Explore</span>
+              </core-icon>
+              <br />
+            </paper-dropdown>
+          </li>
+        </ul>
+    </custom-card>
+    <% end %>
+   
+
+  </div>
+
+

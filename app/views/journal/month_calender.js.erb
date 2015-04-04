@@ -1,0 +1,58 @@
+/*var i = 0; //rows iterator
+var j = 0; //days iterator
+var x = 0; //entries iterator
+//table row loop
+for(i = 1; i < 7; i++){
+	for(j = 0;j < 7; j++)
+	$("tbody").children().eq(i).children().eq(j).children().eq(0).text("<%=  %>");
+	x++;
+}*/
+
+
+
+<%
+	for i in 0...42 
+		%>
+		$(".day-date").eq("<%= i %>").text("<%= @all_entries[i].day %>");
+		<%
+		taskNo = @all_entries[i].bullets.where(:bullet_type => "task").length
+		eventNo =  @all_entries[i].bullets.where(:bullet_type => "event").length
+		noteNo =  @all_entries[i].bullets.where(:bullet_type => "note").length
+		ideaNo =  @all_entries[i].bullets.where(:bullet_type => "idea").length
+		exploreNo =  @all_entries[i].bullets.where(:bullet_type => "explore").length
+		%>
+		<% if(taskNo > 0) %>
+		$(".calender-first-row").eq("<%= i %>").children().eq(0).html("<core-icon icon='check-box-outline-blank' class='handle'></core-icon>");
+		$(".calender-second-row").eq("<%= i %>").children().eq(0).html("<%= taskNo %>");
+		<% end %>
+		<% if (eventNo > 0) %>
+		$(".calender-first-row").eq("<%= i %>").children().eq(1).html("<core-icon icon='event' class='handle'></core-icon>");
+		$(".calender-second-row").eq("<%= i %>").children().eq(1).html("<%= eventNo %>");
+		<% end %>
+		<% if (noteNo > 0) %>
+		$(".calender-first-row").eq("<%= i %>").children().eq(2).html("<core-icon icon='keep' class='handle' id='heart' flex></core-icon>");
+		$(".calender-second-row").eq("<%= i %>").children().eq(2).html("<%= noteNo %>");
+		<% end %>
+		<% if (ideaNo > 0) %>
+		$(".calender-first-row").eq("<%= i %>").children().eq(3).html("<core-icon icon='drive-keep' class='handle' id='heart' flex></core-icon>");
+		$(".calender-second-row").eq("<%= i %>").children().eq(3).html("<%= ideaNo %>");
+		<% end %>
+		<% if (exploreNo > 0) %>
+		$(".calender-first-row").eq("<%= i %>").children().eq(4).html("<core-icon icon='explore' class='handle' id='heart' flex></core-icon>");
+		$(".calender-second-row").eq("<%= i %>").children().eq(4).html("<%= exploreNo %>");
+		<% end %>
+
+		//show today
+		<% if @all_entries[i].day == @today.day && @all_entries[i].month == @today.month && @all_entries[i].year == @today.year %>
+			$(".day-date").eq("<%= i %>").parent().css("background-color","#C5415D");
+			$(".day-date").eq("<%= i %>").parent().css("color","#ffffde");
+			$(".calender-first-row").eq("<%= i %>").children().children().css("color","#392B38");
+			$(".calender-second-row").eq("<%= i %>").css("color","#ffffde");
+
+		<% end %>
+		<%
+
+	end
+%>
+
+$("#title").text("<%= @month_name %>");
